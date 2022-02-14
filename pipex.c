@@ -6,7 +6,7 @@
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:46:29 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/12 13:29:01 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/02/14 14:51:23 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,23 +72,30 @@ void	ft_pipex(t_data *data, char *cmd1, char *cmd2)
 
 int	main(int argc, char **argv, char **envp)
 {
-	int		i;
 	t_data	data;
+	int		i;
 
 	i = 1;
 	if (argc < 5)
-		ft_error("Too much args");
+		ft_error("Syntax error : infile cmd1 cmd2 outfile\n");
 	else
 	{
 		data = get_args(argc, argv, envp);
-		data.infile = open(argv[1], O_RDONLY);
 		data.outfile = open(argv[argc - 1], O_CREAT
 				| O_TRUNC | O_WRONLY, 0644);
-		if (data.infile < 0 || data.outfile < 0)
-			ft_error("Problem opening files\n");
-		while (++i < data.argc - 2)
+		data.infile = open(argv[1], O_RDONLY);
+		if (argc == 5)
 		{
-			ft_pipex(&data, argv[i], argv[i + 1]);
+			if (data.infile < 0 || data.outfile < 0)
+				ft_error("Problem opening files\n");
+			ft_pipex(&data, argv[2], argv[3]);
+		}
+		else
+		{
+			data.tmpfile = open("tmp", O_RDWR | O_TRUNC, 0644);
+			while (++i < data.argc - 2)
+				ft_pipes(&data, argv[i], argv[i + 1]);
 		}
 	}
+	unlink("tmp"); // OH IL SE PASSE QUOI SI JE CLOSE PAS LES FD'S BORDEL DE MERDE ??
 }
