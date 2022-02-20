@@ -6,43 +6,11 @@
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 09:54:48 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/20 17:00:29 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/02/20 18:30:59 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-void	here_doc_child(t_data *data)
-{
-	if (data->here_doc == false)
-		dup2(data->infile, STDIN_FILENO);
-}
-
-void	run_first(t_data *data)
-{
-	char	**paths;
-	char	*cmd;
-	char	*bin;
-	
-	data->child[0] = fork();
-	if(data->child[0] < 0)
-	{
-		ft_error("Fork error");
-	}
-	else if (data->child[0] == 0)
-	{
-		cmd = (ft_split(data->argv[2], ' '));
-		paths = get_paths(data);
-		bin = get_bin(cmd[0], paths);
-		close(data->pipe[0][0]);
-		here_doc_child(data);
-		dup2(data->pipe[0][1], STDOUT_FILENO);
-		if (data->here_doc == false)
-			close(data->infile);
-		close(data->pipe[0][1]);
-		execve(bin, cmd, data->envp);
-	}
-}
 
 void	ft_pipex(t_data *data, int argc, char **argv)
 {

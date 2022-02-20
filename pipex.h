@@ -6,7 +6,7 @@
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:49:42 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/20 16:58:50 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/02/20 18:30:28 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ void	pipe_creator(t_data *data);
 char	*get_bin(char *cmd, char **paths);
 char	*get_line(t_data *data);
 char	**get_paths(t_data *data);
+void	run_first(t_data *data);
 
 #endif
