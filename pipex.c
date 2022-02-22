@@ -6,7 +6,7 @@
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 09:54:48 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/22 22:19:43 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/02/22 22:36:00 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,11 @@
 void	wait_childs(t_data *data)
 {
 	int	i;
-	int	stat;
 
 	i = 0;
-	stat = 0;
 	while (i < data->nb_cmd)
 	{
-		waitpid(data->child[i], &stat, 0);
+		waitpid(data->child[i], NULL, 0);
 		i++;
 	}
 }
