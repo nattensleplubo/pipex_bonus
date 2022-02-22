@@ -6,7 +6,7 @@
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:49:42 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/20 18:30:28 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/02/22 18:56:32 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_data
 {
 	int		argc;
 	int		nb_cmd;
+	int		nb_pipe;
 	int		**pipe;
 	char	**argv;
 	char	**envp;
@@ -48,5 +49,7 @@ char	*get_bin(char *cmd, char **paths);
 char	*get_line(t_data *data);
 char	**get_paths(t_data *data);
 void	run_first(t_data *data);
+void	run_mid(t_data *data, int i);
+void	run_last(t_data *data);
 
 #endif

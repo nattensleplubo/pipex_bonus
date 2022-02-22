@@ -6,7 +6,7 @@
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 18:30:38 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/20 18:31:03 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/02/22 19:13:00 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	here_doc_parent(t_data *data)
 void	run_first(t_data *data)
 {
 	char	**paths;
-	char	*cmd;
+	char	**cmd;
 	char	*bin;
 	
 	data->child[0] = fork();

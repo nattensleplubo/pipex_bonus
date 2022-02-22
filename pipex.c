@@ -6,13 +6,27 @@
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 09:54:48 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/20 18:30:59 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/02/22 19:18:36 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	ft_pipex(t_data *data, int argc, char **argv)
+void	wait_childs(t_data *data)
+{
+	int	i;
+	int	stat;
+
+	i = 0;
+	stat = 0;
+	while (i < data->nb_cmd)
+	{
+		waitpid(data->child[i], &stat, 0);
+		i++;
+	}
+}
+
+void	ft_pipex(t_data *data, int argc)
 {
 	int	i;
 
@@ -20,7 +34,7 @@ void	ft_pipex(t_data *data, int argc, char **argv)
 	data->nb_cmd = argc - 3;
 	pipe_creator(data);
 	run_first(data);
-	while (i < data->nb_cmd - 1);
+	while (i < data->nb_cmd - 1)
 	{
 		run_mid(data, i);
 		i++;
@@ -32,9 +46,8 @@ void	ft_pipex(t_data *data, int argc, char **argv)
 int	main(int argc, char **argv, char **envp)
 {
 	t_data	data;
-	int		i;
 
-	i = 0;
+	data.here_doc = false;
 	if (argc < 5)
 		ft_error("Error");
 	else
@@ -44,6 +57,6 @@ int	main(int argc, char **argv, char **envp)
 		data.infile = open(argv[1], O_RDONLY);
 		if (!data.infile || !data.outfile)
 			ft_error("Error");
-		ft_pipex(&data, argc, argv);
+		ft_pipex(&data, argc);
 	}
 }
