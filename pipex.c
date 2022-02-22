@@ -6,7 +6,7 @@
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 09:54:48 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/22 19:18:36 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/02/22 20:17:40 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ int	main(int argc, char **argv, char **envp)
 	else
 	{
 		data = get_args(argc, argv, envp);
-		data.outfile = open(argv[argc - 1], O_CREAT | O_WRONLY | O_TRUNC);
+		data.outfile = open(argv[argc - 1], O_CREAT | O_WRONLY | O_TRUNC, 0644);
 		data.infile = open(argv[1], O_RDONLY);
-		if (!data.infile || !data.outfile)
+		if (data.infile < 0 || data.outfile < 0)
 			ft_error("Error");
 		ft_pipex(&data, argc);
 	}
