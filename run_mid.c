@@ -6,7 +6,7 @@
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 14:29:12 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/22 22:43:14 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/02/23 11:25:23 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	run_mid(t_data *data, int i)
 	else if (data->child[i] == 0)
 	{
 		cmd = ft_split(data->argv[i + 2], ' ');
-		ft_putendl_fd(cmd[0], 2);
 		paths = get_paths(data);
 		bin = get_bin(cmd[0], paths);
 		close(data->pipe[i][0]);

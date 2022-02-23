@@ -6,7 +6,7 @@
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:49:42 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/22 18:56:32 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/02/23 11:49:38 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,7 @@ typedef struct s_data
 	char	**envp;
 	int		infile;
 	int		outfile;
-	int		tmpfile;
-	int		fd[FOPEN_MAX][2];
-	pid_t	*child;
+	pid_t	child[100];
 	bool	here_doc;
 }			t_data;
 

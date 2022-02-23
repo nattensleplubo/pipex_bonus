@@ -6,7 +6,7 @@
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 18:56:06 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/22 22:11:54 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/02/23 11:53:33 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ void	run_last(t_data *data)
 	else
 	{
 		close(data->outfile);
-		close(data->pipe[data->nb_cmd - 1][0]);
+		close(data->pipe[data->nb_pipe - 1][0]);
 	}
 }

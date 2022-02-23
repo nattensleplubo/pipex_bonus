@@ -6,7 +6,7 @@
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 09:54:48 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/22 22:36:00 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/02/23 11:24:11 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_pipex(t_data *data, int argc)
 		i++;
 	}
 	run_last(data);
-	wait_childs(data);
+	//wait_childs(data);
 }
 
 int	main(int argc, char **argv, char **envp)
